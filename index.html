@@ -4,77 +4,888 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>মোদি দোকান - টেস্ট</title>
+    <title>আরিফা মুদি ভান্ডার - কাথিয়া, পাইকাড়, মুরারাই</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Arial', sans-serif; }
-        body { background: #f5f5f5; color: #333; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
-        header { background: #2e7d32; color: white; padding: 20px; text-align: center; }
-        nav { background: #4caf50; padding: 10px; }
-        nav a { color: white; text-decoration: none; margin: 0 15px; }
-        .product { background: white; border-radius: 10px; padding: 20px; margin: 20px 0; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        .product h3 { color: #2e7d32; margin-bottom: 10px; }
-        .price { color: #d32f2f; font-size: 24px; font-weight: bold; }
-        .btn { background: #2e7d32; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; }
-        footer { background: #1b5e20; color: white; text-align: center; padding: 20px; margin-top: 40px; }
+        /* সাধারণ স্টাইল */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* হেডার */
+        header {
+            background: linear-gradient(135deg, #2c3e50 0%, #4a6491 100%);
+            color: white;
+            padding: 25px 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            border-bottom: 5px solid #e67e22;
+        }
+        
+        .logo-section {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        
+        .logo {
+            font-size: 36px;
+            margin-bottom: 10px;
+            color: #ffd700;
+        }
+        
+        .logo h1 {
+            font-size: 32px;
+            margin-bottom: 5px;
+        }
+        
+        .tagline {
+            font-size: 18px;
+            opacity: 0.9;
+            font-style: italic;
+        }
+        
+        .contact-header {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 15px;
+            font-size: 18px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        /* নেভিগেশন */
+        .nav-menu {
+            display: flex;
+            justify-content: center;
+            background: #34495e;
+            border-radius: 10px;
+            margin-top: 20px;
+            overflow-x: auto;
+        }
+        
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            padding: 15px 25px;
+            transition: all 0.3s;
+            font-weight: 500;
+            border-right: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .nav-menu a:last-child {
+            border-right: none;
+        }
+        
+        .nav-menu a:hover, .nav-menu a.active {
+            background: #e67e22;
+            color: white;
+        }
+        
+        /* হিরো সেকশন */
+        .hero {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .hero-content {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .hero h2 {
+            color: #2c3e50;
+            font-size: 28px;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+        
+        .hero p {
+            color: #555;
+            font-size: 18px;
+            margin-bottom: 25px;
+        }
+        
+        .hero-image {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .hero-image img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        /* পণ্য */
+        .products-section {
+            margin: 40px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-size: 28px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 4px;
+            background: #e67e22;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .product-img {
+            height: 180px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 60px;
+        }
+        
+        .product-info {
+            padding: 20px;
+        }
+        
+        .product-name {
+            font-size: 22px;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .product-price {
+            font-size: 28px;
+            color: #e74c3c;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .product-unit {
+            color: #7f8c8d;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+        
+        .order-btn {
+            display: block;
+            width: 100%;
+            background: #27ae60;
+            color: white;
+            border: none;
+            padding: 12px;
+            font-size: 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+            font-weight: 600;
+        }
+        
+        .order-btn:hover {
+            background: #219653;
+        }
+        
+        /* দাম তালিকা */
+        .price-table-container {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            margin: 40px 0;
+            overflow-x: auto;
+        }
+        
+        .price-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 700px;
+        }
+        
+        .price-table thead {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            color: white;
+        }
+        
+        .price-table th {
+            padding: 18px 15px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 18px;
+        }
+        
+        .price-table td {
+            padding: 15px;
+            border-bottom: 1px solid #ecf0f1;
+        }
+        
+        .price-table tbody tr:hover {
+            background: #f8f9fa;
+        }
+        
+        .in-stock {
+            color: #27ae60;
+            font-weight: 600;
+        }
+        
+        .out-stock {
+            color: #e74c3c;
+            font-weight: 600;
+        }
+        
+        /* যোগাযোগ */
+        .contact-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            margin: 40px 0;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .contact-info h3, .order-form h3 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .contact-details p {
+            margin: 15px 0;
+            font-size: 18px;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .social-links {
+            margin-top: 30px;
+        }
+        
+        .social-links h4 {
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        
+        .social-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .social-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: all 0.3s;
+            border: 1px solid #ddd;
+        }
+        
+        .social-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .whatsapp {
+            background: #25D366;
+            color: white;
+            border: none;
+        }
+        
+        .phone {
+            background: #3498db;
+            color: white;
+            border: none;
+        }
+        
+        /* ফুটার */
+        footer {
+            background: linear-gradient(135deg, #2c3e50 0%, #1a2530 100%);
+            color: white;
+            padding: 40px 0 20px;
+            margin-top: 50px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-section h3 {
+            color: #ffd700;
+            margin-bottom: 20px;
+            font-size: 22px;
+        }
+        
+        .footer-section p, .footer-section a {
+            color: #ecf0f1;
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-section a:hover {
+            color: #ffd700;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #bdc3c7;
+            font-size: 16px;
+        }
+        
+        /* রেসপন্সিভ ডিজাইন */
+        @media (max-width: 768px) {
+            .nav-menu {
+                flex-wrap: wrap;
+            }
+            
+            .nav-menu a {
+                flex: 1;
+                min-width: 120px;
+                text-align: center;
+                padding: 12px;
+            }
+            
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .section-title {
+                font-size: 24px;
+            }
+            
+            .contact-header {
+                flex-direction: column;
+                gap: 15px;
+                align-items: center;
+            }
+        }
+        
+        /* বিশেষ স্টাইল */
+        .highlight {
+            color: #e67e22;
+            font-weight: bold;
+        }
+        
+        .address-box {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 5px solid #3498db;
+            margin: 20px 0;
+        }
+        
+        .note {
+            background: #fff8e1;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 5px solid #ffc107;
+        }
     </style>
 </head>
 <body>
+    <!-- হেডার -->
     <header>
-        <h1>🛒 মোদি দোকান টেস্ট</h1>
-        <p>সকল পণ্য অনলাইনে</p>
+        <div class="container">
+            <div class="logo-section">
+                <div class="logo">
+                    <h1>🛒 আরিফা মুদি ভান্ডার</h1>
+                </div>
+                <p class="tagline">বিশ্বস্ততার সাথে ১০+ বছর ধরে সেবা</p>
+            </div>
+            
+            <div class="contact-header">
+                <div class="contact-item">
+                    <span style="font-size:24px;">📞</span>
+                    <div>
+                        <strong>ফোন:</strong><br>
+                        <span style="font-size:22px; font-weight:bold;">৮৯২৬৭-৬৫০৫০</span>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <span style="font-size:24px;">📍</span>
+                    <div>
+                        <strong>ঠিকানা:</strong><br>
+                        কাথিয়া, পাইকাড়, মুরারাই
+                    </div>
+                </div>
+            </div>
+        </div>
     </header>
-    
-    <nav class="container">
-        <a href="#">হোম</a> | 
-        <a href="#">পণ্য</a> | 
-        <a href="#">দাম</a> | 
-        <a href="#">যোগাযোগ</a>
-    </nav>
-    
+
+    <!-- নেভিগেশন -->
     <div class="container">
-        <h2>পণ্য তালিকা</h2>
-        
-        <div class="product">
-            <h3>নাজিরশাইল চাল</h3>
-            <p>প্রতি কেজি: <span class="price">৮৫ টাকা</span></p>
-            <button class="btn">অর্ডার করুন</button>
-        </div>
-        
-        <div class="product">
-            <h3>মুগ ডাল</h3>
-            <p>প্রতি কেজি: <span class="price">১৩০ টাকা</span></p>
-            <button class="btn">অর্ডার করুন</button>
-        </div>
-        
-        <div class="product">
-            <h3>সয়াবিন তেল</h3>
-            <p>প্রতি লিটার: <span class="price">১৬৫ টাকা</span></p>
-            <button class="btn">অর্ডার করুন</button>
-        </div>
-        
-        <div class="contact">
-            <h2>যোগাযোগ</h2>
-            <p>📞 ফোন: ০১৭XX-XXXXXX</p>
-            <p>📍 ঠিকানা: আপনার দোকানের ঠিকানা</p>
-        </div>
+        <nav class="nav-menu">
+            <a href="#home" class="active">🏠 হোম</a>
+            <a href="#products">🛍️ পণ্য</a>
+            <a href="#prices">💰 দাম তালিকা</a>
+            <a href="#contact">📞 অর্ডার করুন</a>
+        </nav>
     </div>
-    
+
+    <!-- হিরো সেকশন -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h2>স্বাগতম <span class="highlight">আরিফা মুদি ভান্ডারে</span></h2>
+            <p>কাথিয়া, পাইকাড়, মুরারাই এর প্রিমিয়াম মুদি দোকান। দৈনন্দিন সকল পণ্য পাওয়া যায় সঠিক দামে। হোম ডেলিভারি সেবা উপলব্ধ।</p>
+            <div class="address-box">
+                <strong>📍 আমাদের ঠিকানা:</strong><br>
+                কাথিয়া, পাইকাড়, মুরারাই, পশ্চিমবঙ্গ
+            </div>
+            <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                <a href="tel:8926765050" style="background:#e67e22; color:white; padding:12px 25px; border-radius:8px; text-decoration:none; font-weight:bold;">
+                    📞 এখনই কল করুন
+                </a>
+                <a href="#contact" style="background:#3498db; color:white; padding:12px 25px; border-radius:8px; text-decoration:none; font-weight:bold;">
+                    🛒 অর্ডার করুন
+                </a>
+            </div>
+        </div>
+        
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1583258292688-d0213dc5a3a8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="আরিফা মুদি ভান্ডার">
+        </div>
+    </section>
+
+    <!-- পণ্য -->
+    <div class="container">
+        <section id="products" class="products-section">
+            <h2 class="section-title">আজকের বিশেষ অফার</h2>
+            
+            <div class="products-grid">
+                <!-- পণ্য ১ -->
+                <div class="product-card">
+                    <div class="product-img">🍚</div>
+                    <div class="product-info">
+                        <h3 class="product-name">বাসমতি চাল</h3>
+                        <div class="product-price">৬৫ টাকা/কেজি</div>
+                        <div class="product-unit">প্রিমিয়াম কোয়ালিটি</div>
+                        <button class="order-btn" onclick="orderProduct('বাসমতি চাল', 65)">🛒 অর্ডার করুন</button>
+                    </div>
+                </div>
+                
+                <!-- পণ্য ২ -->
+                <div class="product-card">
+                    <div class="product-img">🥜</div>
+                    <div class="product-info">
+                        <h3 class="product-name">মুগ ডাল</h3>
+                        <div class="product-price">১২০ টাকা/কেজি</div>
+                        <div class="product-unit">তাজা ও পরিষ্কার</div>
+                        <button class="order-btn" onclick="orderProduct('মুগ ডাল', 120)">🛒 অর্ডার করুন</button>
+                    </div>
+                </div>
+                
+                <!-- পণ্য ৩ -->
+                <div class="product-card">
+                    <div class="product-img">🛢️</div>
+                    <div class="product-info">
+                        <h3 class="product-name">সরিষার তেল</h3>
+                        <div class="product-price">২০০ টাকা/লিটার</div>
+                        <div class="product-unit">শুদ্ধ ও বিশুদ্ধ</div>
+                        <button class="order-btn" onclick="orderProduct('সরিষার তেল', 200)">🛒 অর্ডার করুন</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- দাম তালিকা -->
+        <section id="prices">
+            <h2 class="section-title">পণ্যের দাম তালিকা</h2>
+            
+            <div class="price-table-container">
+                <table class="price-table">
+                    <thead>
+                        <tr>
+                            <th>পণ্যের নাম</th>
+                            <th>একক</th>
+                            <th>দাম (টাকা)</th>
+                            <th>স্টক অবস্থা</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>বাসমতি চাল</td>
+                            <td>কেজি</td>
+                            <td>৬৫</td>
+                            <td class="in-stock">✅ আছে</td>
+                        </tr>
+                        <tr>
+                            <td>মুগ ডাল</td>
+                            <td>কেজি</td>
+                            <td>১২০</td>
+                            <td class="in-stock">✅ আছে</td>
+                        </tr>
+                        <tr>
+                            <td>সরিষার তেল</td>
+                            <td>লিটার</td>
+                            <td>২০০</td>
+                            <td class="in-stock">✅ আছে</td>
+                        </tr>
+                        <tr>
+                            <td>সয়াবিন তেল</td>
+                            <td>লিটার</td>
+                            <td>১৭০</td>
+                            <td class="in-stock">✅ আছে</td>
+                        </tr>
+                        <tr>
+                            <td>মসুর ডাল</td>
+                            <td>কেজি</td>
+                            <td>১০০</td>
+                            <td class="in-stock">✅ আছে</td>
+                        </tr>
+                        <tr>
+                            <td>পেঁয়াজ</td>
+                            <td>কেজি</td>
+                            <td>৫০</td>
+                            <td class="in-stock">✅ আছে</td>
+                        </tr>
+                        <tr>
+                            <td>রসুন</td>
+                            <td>কেজি</td>
+                            <td>২০০</td>
+                            <td class="in-stock">✅ আছে</td>
+                        </tr>
+                        <tr>
+                            <td>আলু</td>
+                            <td>কেজি</td>
+                            <td>৩৫</td>
+                            <td class="in-stock">✅ আছে</td>
+                        </tr>
+                        <tr>
+                            <td>চিনি</td>
+                            <td>কেজি</td>
+                            <td>৫০</td>
+                            <td class="in-stock">✅ আছে</td>
+                        </tr>
+                        <tr>
+                            <td>লবণ</td>
+                            <td>কেজি</td>
+                            <td>২৫</td>
+                            <td class="in-stock">✅ আছে</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="note">
+                <strong>📝 নোট:</strong> দাম বাজার দর অনুযায়ী পরিবর্তিত হতে পারে। সঠিক দামের জন্য কল করুন।
+            </div>
+        </section>
+
+        <!-- যোগাযোগ ও অর্ডার -->
+        <section id="contact" class="contact-section">
+            <h2 class="section-title">অর্ডার ও যোগাযোগ</h2>
+            
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>📞 সরাসরি কল করুন</h3>
+                    <div class="contact-details">
+                        <p>
+                            <span style="font-size:24px;">📱</span>
+                            <span>
+                                <strong>প্রধান নম্বর:</strong><br>
+                                <span style="font-size:24px; font-weight:bold; color:#e67e22;">৮৯২৬৭-৬৫০৫০</span>
+                            </span>
+                        </p>
+                        
+                        <p>
+                            <span style="font-size:24px;">📍</span>
+                            <span>
+                                <strong>দোকানের ঠিকানা:</strong><br>
+                                আরিফা মুদি ভান্ডার<br>
+                                কাথিয়া, পাইকাড়, মুরারাই<br>
+                                পশ্চিমবঙ্গ, ভারত
+                            </span>
+                        </p>
+                        
+                        <p>
+                            <span style="font-size:24px;">⏰</span>
+                            <span>
+                                <strong>খোলার সময়:</strong><br>
+                                সকাল ৭টা - রাত ১০টা<br>
+                                সপ্তাহের ৭ দিন
+                            </span>
+                        </p>
+                        
+                        <p>
+                            <span style="font-size:24px;">🚚</span>
+                            <span>
+                                <strong>ডেলিভারি:</strong><br>
+                                কাথিয়া, পাইকাড় এলাকায়<br>
+                                বিনামূল্যে হোম ডেলিভারি
+                            </span>
+                        </p>
+                    </div>
+                    
+                    <div class="social-links">
+                        <h4>দ্রুত অর্ডার করুন</h4>
+                        <div class="social-buttons">
+                            <a href="tel:8926765050" class="social-btn phone">
+                                <span style="font-size:20px;">📞</span> কল করুন
+                            </a>
+                            <a href="https://wa.me/918926765050?text=আরিফা মুদি ভান্ডার থেকে পণ্য অর্ডার করতে চাই" class="social-btn whatsapp">
+                                <span style="font-size:20px;">💬</span> WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="order-form">
+                    <h3>🛒 অনলাইন অর্ডার ফর্ম</h3>
+                    <div style="background:#f8f9fa; padding:20px; border-radius:10px;">
+                        <form id="orderForm" onsubmit="submitOrder(event)">
+                            <div style="margin-bottom:15px;">
+                                <label style="display:block; margin-bottom:8px; font-weight:bold;">আপনার নাম</label>
+                                <input type="text" id="customerName" placeholder="আপনার পুরো নাম" required style="width:100%; padding:12px; border:1px solid #ddd; border-radius:8px; font-size:16px;">
+                            </div>
+                            
+                            <div style="margin-bottom:15px;">
+                                <label style="display:block; margin-bottom:8px; font-weight:bold;">মোবাইল নম্বর</label>
+                                <input type="tel" id="customerPhone" placeholder="৯৮৭৬৫৪৩২১০" required style="width:100%; padding:12px; border:1px solid #ddd; border-radius:8px; font-size:16px;">
+                            </div>
+                            
+                            <div style="margin-bottom:15px;">
+                                <label style="display:block; margin-bottom:8px; font-weight:bold;">ডেলিভারি ঠিকানা</label>
+                                <textarea id="customerAddress" placeholder="বাড়ি নং, গ্রাম/পাড়া, কাথিয়া, পাইকাড়" rows="3" required style="width:100%; padding:12px; border:1px solid #ddd; border-radius:8px; font-size:16px;"></textarea>
+                            </div>
+                            
+                            <div style="margin-bottom:15px;">
+                                <label style="display:block; margin-bottom:8px; font-weight:bold;">পণ্যের তালিকা</label>
+                                <textarea id="orderItems" placeholder="উদাহরণ: ২ কেজি চাল, ১ কেজি ডাল, ১ লিটার তেল" rows="4" required style="width:100%; padding:12px; border:1px solid #ddd; border-radius:8px; font-size:16px;"></textarea>
+                            </div>
+                            
+                            <button type="submit" style="background:#27ae60; color:white; border:none; padding:15px; width:100%; border-radius:8px; font-size:18px; font-weight:bold; cursor:pointer; transition:background 0.3s;">
+                                📲 অর্ডার কনফার্ম করুন
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ফুটার -->
     <footer>
-        <p>© ২০২৩ মোদি দোকান | সকল অধিকার সংরক্ষিত</p>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>আরিফা মুদি ভান্ডার</h3>
+                    <p>কাথিয়া, পাইকাড়, মুরারাই এর প্রাচীন ও বিশ্বস্ত মুদি দোকান।</p>
+                    <p>১০+ বছর ধরে নিরবচ্ছিন্ন সেবা প্রদান করছি।</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>দ্রুত লিংক</h3>
+                    <a href="#home">হোম</a>
+                    <a href="#products">পণ্য</a>
+                    <a href="#prices">দাম তালিকা</a>
+                    <a href="#contact">অর্ডার করুন</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>যোগাযোগ</h3>
+                    <p>📞 ৮৯২৬৭-৬৫০৫০</p>
+                    <p>📍 কাথিয়া, পাইকাড়, মুরারাই</p>
+                    <p>⏰ সকাল ৭টা - রাত ১০টা</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; ২০২৩ আরিফা মুদি ভান্ডার। সকল অধিকার সংরক্ষিত।</p>
+                <p style="margin-top:10px;">ওয়েবসাইট: আপনার দোকানের অনলাইন উপস্থিতি</p>
+            </div>
+        </div>
     </footer>
-    
+
     <script>
-        // সরল JavaScript কোড
-        document.querySelectorAll('.btn').forEach(button => {
-            button.addEventListener('click', function() {
-                const productName = this.parentElement.querySelector('h3').textContent;
-                const price = this.parentElement.querySelector('.price').textContent;
-                alert('ধন্যবাদ! আপনি ' + productName + ' অর্ডার করেছেন। দাম: ' + price);
+        // পণ্য অর্ডার ফাংশন
+        function orderProduct(productName, price) {
+            const phone = "8926765050";
+            const message = `আমি আরিফা মুদি ভান্ডার থেকে ${productName} অর্ডার করতে চাই। দাম: ${price} টাকা`;
+            
+            const confirmOrder = confirm(`${productName} অর্ডার করবেন?\nদাম: ${price} টাকা\n\nওকে চাপলে সরাসরি কল করা হবে।`);
+            
+            if (confirmOrder) {
+                // ফোন কল করার অপশন
+                window.location.href = `tel:${phone}`;
+                
+                // বিকল্পভাবে WhatsApp মেসেজ
+                // const whatsappUrl = `https://wa.me/91${phone}?text=${encodeURIComponent(message)}`;
+                // window.open(whatsappUrl, '_blank');
+            }
+        }
+        
+        // অর্ডার ফর্ম সাবমিট
+        function submitOrder(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('customerName').value;
+            const phone = document.getElementById('customerPhone').value;
+            const address = document.getElementById('customerAddress').value;
+            const items = document.getElementById('orderItems').value;
+            
+            // ফর্ম ভ্যালিডেশন
+            if (phone.length !== 10) {
+                alert('দয়া করে সঠিক ১০ ডিজিটের মোবাইল নম্বর দিন।');
+                return;
+            }
+            
+            // অর্ডার সংরক্ষণ (এখানে আপনি সার্ভারে ডাটা পাঠাতে পারেন)
+            const orderData = {
+                name: name,
+                phone: phone,
+                address: address,
+                items: items,
+                timestamp: new Date().toLocaleString()
+            };
+            
+            // লোকাল স্টোরেজে সংরক্ষণ (ঐচ্ছিক)
+            localStorage.setItem('lastOrder', JSON.stringify(orderData));
+            
+            // সাফল্য মেসেজ
+            alert(`ধন্যবাদ ${name}!\n\nআপনার অর্ডারটি সফলভাবে গৃহীত হয়েছে।\n\nঅর্ডার আইডি: #AR${Date.now().toString().slice(-6)}\nআমরা শীঘ্রই আপনার সাথে যোগাযোগ করব (${phone})।`);
+            
+            // ফর্ম রিসেট
+            document.getElementById('orderForm').reset();
+            
+            // WhatsApp এ মেসেজ পাঠানোর অপশন
+            const sendWhatsApp = confirm('WhatsApp এ অর্ডার কনফার্মেশন পাঠাতে চান?');
+            if (sendWhatsApp) {
+                const whatsappMessage = `আরিফা মুদি ভান্ডার অর্ডার:\nনাম: ${name}\nফোন: ${phone}\nঠিকানা: ${address}\nপণ্য: ${items}\n\nঅর্ডার আইডি: #AR${Date.now().toString().slice(-6)}`;
+                const whatsappUrl = `https://wa.me/918926765050?text=${encodeURIComponent(whatsappMessage)}`;
+                window.open(whatsappUrl, '_blank');
+            }
+        }
+        
+        // পেজ লোড হওয়ার মেসেজ
+        window.onload = function() {
+            console.log('আরিফা মুদি ভান্ডার ওয়েবসাইট লোড হয়েছে!');
+            
+            // URL হ্যাশ অনুযায়ী নেভিগেশন হাইলাইট
+            const currentHash = window.location.hash || '#home';
+            document.querySelectorAll('.nav-menu a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === currentHash) {
+                    link.classList.add('active');
+                }
+            });
+        }
+        
+        // নেভিগেশন স্ক্রোল
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                
+                if (targetSection) {
+                    // নেভিগেশন আপডেট
+                    document.querySelectorAll('.nav-menu a').forEach(navLink => {
+                        navLink.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                    
+                    // স্ক্রোল
+                    targetSection.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    
+                    // URL আপডেট
+                    window.history.pushState(null, null, targetId);
+                }
             });
         });
         
-        console.log('ওয়েবসাইট সফলভাবে লোড হয়েছে!');
+        // তারিখ আপডেট
+        function updateDate() {
+            const now = new Date();
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const dateString = now.toLocaleDateString('bn-BD', options);
+            console.log('আজকের তারিখ:', dateString);
+        }
+        
+        updateDate();
     </script>
 </body>
 </html>
