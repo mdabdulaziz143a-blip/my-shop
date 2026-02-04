@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>মোদি দোকান - টেস্ট</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Arial', sans-serif; }
+        body { background: #f5f5f5; color: #333; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        header { background: #2e7d32; color: white; padding: 20px; text-align: center; }
+        nav { background: #4caf50; padding: 10px; }
+        nav a { color: white; text-decoration: none; margin: 0 15px; }
+        .product { background: white; border-radius: 10px; padding: 20px; margin: 20px 0; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .product h3 { color: #2e7d32; margin-bottom: 10px; }
+        .price { color: #d32f2f; font-size: 24px; font-weight: bold; }
+        .btn { background: #2e7d32; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; }
+        footer { background: #1b5e20; color: white; text-align: center; padding: 20px; margin-top: 40px; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🛒 মোদি দোকান টেস্ট</h1>
+        <p>সকল পণ্য অনলাইনে</p>
+    </header>
+    
+    <nav class="container">
+        <a href="#">হোম</a> | 
+        <a href="#">পণ্য</a> | 
+        <a href="#">দাম</a> | 
+        <a href="#">যোগাযোগ</a>
+    </nav>
+    
+    <div class="container">
+        <h2>পণ্য তালিকা</h2>
+        
+        <div class="product">
+            <h3>নাজিরশাইল চাল</h3>
+            <p>প্রতি কেজি: <span class="price">৮৫ টাকা</span></p>
+            <button class="btn">অর্ডার করুন</button>
+        </div>
+        
+        <div class="product">
+            <h3>মুগ ডাল</h3>
+            <p>প্রতি কেজি: <span class="price">১৩০ টাকা</span></p>
+            <button class="btn">অর্ডার করুন</button>
+        </div>
+        
+        <div class="product">
+            <h3>সয়াবিন তেল</h3>
+            <p>প্রতি লিটার: <span class="price">১৬৫ টাকা</span></p>
+            <button class="btn">অর্ডার করুন</button>
+        </div>
+        
+        <div class="contact">
+            <h2>যোগাযোগ</h2>
+            <p>📞 ফোন: ০১৭XX-XXXXXX</p>
+            <p>📍 ঠিকানা: আপনার দোকানের ঠিকানা</p>
+        </div>
+    </div>
+    
+    <footer>
+        <p>© ২০২৩ মোদি দোকান | সকল অধিকার সংরক্ষিত</p>
+    </footer>
+    
+    <script>
+        // সরল JavaScript কোড
+        document.querySelectorAll('.btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const productName = this.parentElement.querySelector('h3').textContent;
+                const price = this.parentElement.querySelector('.price').textContent;
+                alert('ধন্যবাদ! আপনি ' + productName + ' অর্ডার করেছেন। দাম: ' + price);
+            });
+        });
+        
+        console.log('ওয়েবসাইট সফলভাবে লোড হয়েছে!');
+    </script>
+</body>
+</html>
