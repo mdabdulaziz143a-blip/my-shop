@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="bn">
 <head>
@@ -6,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>আরিফা মুদি ভান্ডার - কাথিয়া, পাইকাড়, মুরারাই</title>
     <style>
-        /* সাধারণ স্টাইল */
         * {
             margin: 0;
             padding: 0;
@@ -291,6 +289,83 @@
             font-weight: 600;
         }
         
+        /* এডমিন প্যানেল */
+        .admin-panel {
+            background: linear-gradient(135deg, #2c3e50 0%, #1a2530 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .admin-panel h3 {
+            color: #ffd700;
+            margin-bottom: 20px;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .admin-buttons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 25px 0;
+        }
+        
+        .admin-btn {
+            background: #ffd700;
+            color: #2c3e50;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        
+        .admin-btn:hover {
+            background: #fff;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255,215,0,0.3);
+        }
+        
+        .admin-instructions {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 25px;
+        }
+        
+        .admin-instructions h4 {
+            color: #ffd700;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+        
+        /* গুগল ফর্ম */
+        .form-container {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            margin: 30px 0;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+        }
+        
+        .form-container iframe {
+            display: block;
+            border: none;
+            width: 100%;
+            height: 750px;
+        }
+        
         /* যোগাযোগ */
         .contact-section {
             background: white;
@@ -410,7 +485,29 @@
             font-size: 16px;
         }
         
-        /* রেসপন্সিভ ডিজাইন */
+        /* বিশেষ স্টাইল */
+        .highlight {
+            color: #e67e22;
+            font-weight: bold;
+        }
+        
+        .address-box {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 5px solid #3498db;
+            margin: 20px 0;
+        }
+        
+        .note {
+            background: #fff8e1;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 5px solid #ffc107;
+        }
+        
+        /* রেসপন্সিভ */
         @media (max-width: 768px) {
             .nav-menu {
                 flex-wrap: wrap;
@@ -437,28 +534,20 @@
                 gap: 15px;
                 align-items: center;
             }
+            
+            .admin-buttons {
+                flex-direction: column;
+            }
+            
+            .form-container iframe {
+                height: 600px;
+            }
         }
         
-        /* বিশেষ স্টাইল */
-        .highlight {
-            color: #e67e22;
-            font-weight: bold;
-        }
-        
-        .address-box {
-            background: #f8f9fa;
-            padding: 15px;
-            border-radius: 8px;
-            border-left: 5px solid #3498db;
-            margin: 20px 0;
-        }
-        
-        .note {
-            background: #fff8e1;
-            padding: 15px;
-            border-radius: 8px;
-            margin: 20px 0;
-            border-left: 5px solid #ffc107;
+        @media (max-width: 480px) {
+            .form-container iframe {
+                height: 500px;
+            }
         }
     </style>
 </head>
@@ -499,7 +588,8 @@
             <a href="#home" class="active">🏠 হোম</a>
             <a href="#products">🛍️ পণ্য</a>
             <a href="#prices">💰 দাম তালিকা</a>
-            <a href="#contact">📞 অর্ডার করুন</a>
+            <a href="#order">📝 অর্ডার করুন</a>
+            <a href="#admin">👑 এডমিন</a>
         </nav>
     </div>
 
@@ -516,8 +606,8 @@
                 <a href="tel:8926765050" style="background:#e67e22; color:white; padding:12px 25px; border-radius:8px; text-decoration:none; font-weight:bold;">
                     📞 এখনই কল করুন
                 </a>
-                <a href="#contact" style="background:#3498db; color:white; padding:12px 25px; border-radius:8px; text-decoration:none; font-weight:bold;">
-                    🛒 অর্ডার করুন
+                <a href="#order" style="background:#3498db; color:white; padding:12px 25px; border-radius:8px; text-decoration:none; font-weight:bold;">
+                    🛒 অনলাইন অর্ডার
                 </a>
             </div>
         </div>
@@ -533,7 +623,6 @@
             <h2 class="section-title">আজকের বিশেষ অফার</h2>
             
             <div class="products-grid">
-                <!-- পণ্য ১ -->
                 <div class="product-card">
                     <div class="product-img">🍚</div>
                     <div class="product-info">
@@ -544,7 +633,6 @@
                     </div>
                 </div>
                 
-                <!-- পণ্য ২ -->
                 <div class="product-card">
                     <div class="product-img">🥜</div>
                     <div class="product-info">
@@ -555,7 +643,6 @@
                     </div>
                 </div>
                 
-                <!-- পণ্য ৩ -->
                 <div class="product-card">
                     <div class="product-img">🛢️</div>
                     <div class="product-info">
@@ -583,78 +670,116 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>বাসমতি চাল</td>
-                            <td>কেজি</td>
-                            <td>৬৫</td>
-                            <td class="in-stock">✅ আছে</td>
-                        </tr>
-                        <tr>
-                            <td>মুগ ডাল</td>
-                            <td>কেজি</td>
-                            <td>১২০</td>
-                            <td class="in-stock">✅ আছে</td>
-                        </tr>
-                        <tr>
-                            <td>সরিষার তেল</td>
-                            <td>লিটার</td>
-                            <td>২০০</td>
-                            <td class="in-stock">✅ আছে</td>
-                        </tr>
-                        <tr>
-                            <td>সয়াবিন তেল</td>
-                            <td>লিটার</td>
-                            <td>১৭০</td>
-                            <td class="in-stock">✅ আছে</td>
-                        </tr>
-                        <tr>
-                            <td>মসুর ডাল</td>
-                            <td>কেজি</td>
-                            <td>১০০</td>
-                            <td class="in-stock">✅ আছে</td>
-                        </tr>
-                        <tr>
-                            <td>পেঁয়াজ</td>
-                            <td>কেজি</td>
-                            <td>৫০</td>
-                            <td class="in-stock">✅ আছে</td>
-                        </tr>
-                        <tr>
-                            <td>রসুন</td>
-                            <td>কেজি</td>
-                            <td>২০০</td>
-                            <td class="in-stock">✅ আছে</td>
-                        </tr>
-                        <tr>
-                            <td>আলু</td>
-                            <td>কেজি</td>
-                            <td>৩৫</td>
-                            <td class="in-stock">✅ আছে</td>
-                        </tr>
-                        <tr>
-                            <td>চিনি</td>
-                            <td>কেজি</td>
-                            <td>৫০</td>
-                            <td class="in-stock">✅ আছে</td>
-                        </tr>
-                        <tr>
-                            <td>লবণ</td>
-                            <td>কেজি</td>
-                            <td>২৫</td>
-                            <td class="in-stock">✅ আছে</td>
-                        </tr>
+                        <tr><td>বাসমতি চাল</td><td>কেজি</td><td>৬৫</td><td class="in-stock">✅ আছে</td></tr>
+                        <tr><td>মুগ ডাল</td><td>কেজি</td><td>১২০</td><td class="in-stock">✅ আছে</td></tr>
+                        <tr><td>সরিষার তেল</td><td>লিটার</td><td>২০০</td><td class="in-stock">✅ আছে</td></tr>
+                        <tr><td>সয়াবিন তেল</td><td>লিটার</td><td>১৭০</td><td class="in-stock">✅ আছে</td></tr>
+                        <tr><td>মসুর ডাল</td><td>কেজি</td><td>১০০</td><td class="in-stock">✅ আছে</td></tr>
+                        <tr><td>পেঁয়াজ</td><td>কেজি</td><td>৫০</td><td class="in-stock">✅ আছে</td></tr>
+                        <tr><td>রসুন</td><td>কেজি</td><td>২০০</td><td class="in-stock">✅ আছে</td></tr>
+                        <tr><td>আলু</td><td>কেজি</td><td>৩৫</td><td class="in-stock">✅ আছে</td></tr>
+                        <tr><td>চিনি</td><td>কেজি</td><td>৫০</td><td class="in-stock">✅ আছে</td></tr>
+                        <tr><td>লবণ</td><td>কেজি</td><td>২৫</td><td class="in-stock">✅ আছে</td></tr>
                     </tbody>
                 </table>
             </div>
+        </section>
+
+        <!-- Google Form Order Section -->
+        <section id="order" class="contact-section">
+            <h2 class="section-title">অনলাইন অর্ডার ফর্ম</h2>
             
             <div class="note">
-                <strong>📝 নোট:</strong> দাম বাজার দর অনুযায়ী পরিবর্তিত হতে পারে। সঠিক দামের জন্য কল করুন।
+                <strong>📋 নির্দেশিকা:</strong>
+                <ol style="margin: 10px 0; padding-left: 20px;">
+                    <li>নিচের ফর্মটি পূরণ করুন</li>
+                    <li>সব তথ্য সঠিকভাবে দিন</li>
+                    <li>সাবমিট করলে অর্ডারটি আমাদের ডাটাবেসে চলে যাবে</li>
+                    <li>আমরা আপনাকে কল করে কনফার্ম করব</li>
+                </ol>
+            </div>
+            
+            <!-- Google Form Embed -->
+            <div class="form-container">
+                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSd7I2x9itmXzKf2LpkW3b7Bk-wt12D8oA34j9EdAYRfzASvGA/viewform?embedded=true" 
+                        frameborder="0" 
+                        marginheight="0" 
+                        marginwidth="0">
+                    লোড হচ্ছে...
+                </iframe>
+            </div>
+            
+            <div class="note">
+                <strong>✅ ফর্ম সফলভাবে সাবমিট করার পর:</strong>
+                <ul style="margin: 10px 0; padding-left: 20px;">
+                    <li>"ধন্যবাদ" মেসেজ দেখবেন</li>
+                    <li>ডাটা সরাসরি Google Sheet-এ সেভ হবে</li>
+                    <li>আপনি Admin Panel থেকে সব অর্ডার দেখতে পারবেন</li>
+                    <li>আমরা ১৫-২০ মিনিটের মধ্যে আপনার সাথে যোগাযোগ করব</li>
+                </ul>
             </div>
         </section>
 
-        <!-- যোগাযোগ ও অর্ডার -->
+        <!-- এডমিন প্যানেল -->
+        <section id="admin" class="admin-panel">
+            <h3>👑 এডমিন কন্ট্রোল প্যানেল</h3>
+            <p>এই সেকশন শুধুমাত্র দোকানের Owner/Admin এর জন্য। এখান থেকে সব অর্ডার দেখতে和管理 করতে পারবেন।</p>
+            
+            <div class="admin-buttons">
+                <a href="https://docs.google.com/spreadsheets/d/1fPdvXjJiq_0v2KZQq-fSmvzMIXkofh9lD3EWV8tblNY/edit?usp=sharing" 
+                   target="_blank" class="admin-btn">
+                    📊 সব অর্ডার দেখুন
+                </a>
+                <a href="https://forms.gle/XUucg3cWnB6aWcFe9" target="_blank" class="admin-btn">
+                    ✏️ ফর্ম এডিট করুন
+                </a>
+                <button onclick="setupMailNotification()" class="admin-btn">
+                    📧 মেইল নোটিফিকেশন সেটআপ
+                </button>
+            </div>
+            
+            <div class="admin-instructions">
+                <h4>🚀 মেইল নোটিফিকেশন সেটআপ করুন (Step-by-Step)</h4>
+                <p><strong>প্রতিটি অর্ডার পেলে মেইল পেতে এই স্টেপগুলো ফলো করুন:</strong></p>
+                
+                <div style="margin-top: 15px;">
+                    <p><strong>📌 ধাপ ১:</strong> উপরের "সব অর্ডার দেখুন" বাটনে ক্লিক করে Google Sheets ওপেন করুন</p>
+                    <p><strong>📌 ধাপ ২:</strong> Sheets মেনু থেকে <code>Extensions → Apps Script</code> এ ক্লিক করুন</p>
+                    <p><strong>📌 ধাপ ৩:</strong> নিচের কোডটি কপি করে Apps Script এ পেস্ট করুন:</p>
+                    
+                    <div style="background: #2c3e50; color: white; padding: 15px; border-radius: 5px; margin: 10px 0; font-family: monospace; font-size: 14px; overflow-x: auto;">
+                        function onFormSubmit(e) {<br>
+                        &nbsp;&nbsp;var সময় = e.values[0];<br>
+                        &nbsp;&nbsp;var নাম = e.values[1];<br>
+                        &nbsp;&nbsp;var ফোন = e.values[2];<br>
+                        &nbsp;&nbsp;var ঠিকানা = e.values[3];<br>
+                        &nbsp;&nbsp;var পণ্য = e.values[4];<br>
+                        &nbsp;&nbsp;var মোট_দাম = e.values[5];<br>
+                        &nbsp;&nbsp;var অবস্থা = e.values[6];<br><br>
+                        &nbsp;&nbsp;var আপনার_ইমেইল = "আপনার-ইমেইল-এখানে-লিখুন@gmail.com";<br><br>
+                        &nbsp;&nbsp;var মেইল_শিরোনাম = "🛒 নতুন অর্ডার! - " + নাম;<br>
+                        &nbsp;&nbsp;var মেইল_বিস্তারিত = "আরিফা মুদি ভান্ডারে নতুন অর্ডার!\\n\\n" +<br>
+                        &nbsp;&nbsp;"গ্রাহক: " + নাম + "\\n" +<br>
+                        &nbsp;&nbsp;"ফোন: " + ফোন + "\\n" +<br>
+                        &nbsp;&nbsp;"ঠিকানা: " + ঠিকানা + "\\n" +<br>
+                        &nbsp;&nbsp;"পণ্য: " + পণ্য + "\\n" +<br>
+                        &nbsp;&nbsp;"মূল্য: " + মোট_দাম + " টাকা\\n\\n" +<br>
+                        &nbsp;&nbsp;"দ্রুত যোগাযোগ করুন।";<br><br>
+                        &nbsp;&nbsp;MailApp.sendEmail(আপনার_ইমেইল, মেইল_শিরোনাম, মেইল_বিস্তারিত);<br>
+                        }
+                    </div>
+                    
+                    <p><strong>📌 ধাপ ৪:</strong> লাইন ১০-এ আপনার নিজের ইমেইল ঠিকানা লিখুন</p>
+                    <p><strong>📌 ধাপ ৫:</strong> Save করুন → বামপাশে Triggers (⏰) আইকনে ক্লিক করুন → "+ Add Trigger"</p>
+                    <p><strong>📌 ধাপ ৬:</strong> ফাংশন: <code>onFormSubmit</code>, ইভেন্ট: <code>On form submit</code> সিলেক্ট করে Save করুন</p>
+                    <p><strong>✅ সম্পূর্ণ!</strong> এখন থেকে কেউ অর্ডার দিলেই আপনি মেইল পাবেন</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- যোগাযোগ -->
         <section id="contact" class="contact-section">
-            <h2 class="section-title">অর্ডার ও যোগাযোগ</h2>
+            <h2 class="section-title">যোগাযোগ</h2>
             
             <div class="contact-grid">
                 <div class="contact-info">
@@ -686,15 +811,6 @@
                                 সপ্তাহের ৭ দিন
                             </span>
                         </p>
-                        
-                        <p>
-                            <span style="font-size:24px;">🚚</span>
-                            <span>
-                                <strong>ডেলিভারি:</strong><br>
-                                কাথিয়া, পাইকাড় এলাকায়<br>
-                                বিনামূল্যে হোম ডেলিভারি
-                            </span>
-                        </p>
                     </div>
                     
                     <div class="social-links">
@@ -711,33 +827,29 @@
                 </div>
                 
                 <div class="order-form">
-                    <h3>🛒 অনলাইন অর্ডার ফর্ম</h3>
-                    <div style="background:#f8f9fa; padding:20px; border-radius:10px;">
-                        <form id="orderForm" onsubmit="submitOrder(event)">
-                            <div style="margin-bottom:15px;">
-                                <label style="display:block; margin-bottom:8px; font-weight:bold;">আপনার নাম</label>
-                                <input type="text" id="customerName" placeholder="আপনার পুরো নাম" required style="width:100%; padding:12px; border:1px solid #ddd; border-radius:8px; font-size:16px;">
-                            </div>
-                            
-                            <div style="margin-bottom:15px;">
-                                <label style="display:block; margin-bottom:8px; font-weight:bold;">মোবাইল নম্বর</label>
-                                <input type="tel" id="customerPhone" placeholder="৯৮৭৬৫৪৩২১০" required style="width:100%; padding:12px; border:1px solid #ddd; border-radius:8px; font-size:16px;">
-                            </div>
-                            
-                            <div style="margin-bottom:15px;">
-                                <label style="display:block; margin-bottom:8px; font-weight:bold;">ডেলিভারি ঠিকানা</label>
-                                <textarea id="customerAddress" placeholder="বাড়ি নং, গ্রাম/পাড়া, কাথিয়া, পাইকাড়" rows="3" required style="width:100%; padding:12px; border:1px solid #ddd; border-radius:8px; font-size:16px;"></textarea>
-                            </div>
-                            
-                            <div style="margin-bottom:15px;">
-                                <label style="display:block; margin-bottom:8px; font-weight:bold;">পণ্যের তালিকা</label>
-                                <textarea id="orderItems" placeholder="উদাহরণ: ২ কেজি চাল, ১ কেজি ডাল, ১ লিটার তেল" rows="4" required style="width:100%; padding:12px; border:1px solid #ddd; border-radius:8px; font-size:16px;"></textarea>
-                            </div>
-                            
-                            <button type="submit" style="background:#27ae60; color:white; border:none; padding:15px; width:100%; border-radius:8px; font-size:18px; font-weight:bold; cursor:pointer; transition:background 0.3s;">
-                                📲 অর্ডার কনফার্ম করুন
-                            </button>
-                        </form>
+                    <h3>🏪 আমাদের সম্পর্কে</h3>
+                    <div style="background:#f8f9fa; padding:20px; border-radius:10px; height:100%;">
+                        <p style="margin-bottom: 15px; font-size: 18px;">
+                            <strong>আরিফা মুদি ভান্ডার</strong> কাথিয়া, পাইকাড়, মুরারাই এর একটি বিশ্বস্ত মুদি দোকান। 
+                            ১০+ বছর ধরে আমরা এলাকাবাসীকে সঠিক দামে উন্নত মানের পণ্য সরবরাহ করে আসছি।
+                        </p>
+                        
+                        <div style="margin: 20px 0;">
+                            <h4 style="color:#2c3e50; margin-bottom:10px;">✅ আমাদের সেবা:</h4>
+                            <ul style="padding-left: 20px;">
+                                <li>সকাল ৭টা - রাত ১০টা পর্যন্ত খোলা</li>
+                                <li>কাথিয়া, পাইকাড় এলাকায় ফ্রি হোম ডেলিভারি</li>
+                                <li>তাজা ও উন্নত মানের পণ্য</li>
+                                <li>সঠিক ওজন ও সঠিক দাম</li>
+                                <li>অনলাইন অর্ডার সুবিধা</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="note">
+                            <strong>💡 অনলাইন অর্ডার:</strong> উপরে দেওয়া Google ফর্মটি পূরণ করুন 
+                            বা সরাসরি WhatsApp/ফোন করে অর্ডার দিন। ১৫-২০ মিনিটের মধ্যে আপনার অর্ডার 
+                            কনফার্মেশন পাবেন।
+                        </div>
                     </div>
                 </div>
             </div>
@@ -759,7 +871,8 @@
                     <a href="#home">হোম</a>
                     <a href="#products">পণ্য</a>
                     <a href="#prices">দাম তালিকা</a>
-                    <a href="#contact">অর্ডার করুন</a>
+                    <a href="#order">অর্ডার করুন</a>
+                    <a href="#admin">এডমিন</a>
                 </div>
                 
                 <div class="footer-section">
@@ -767,11 +880,14 @@
                     <p>📞 ৮৯২৬৭-৬৫০৫০</p>
                     <p>📍 কাথিয়া, পাইকাড়, মুরারাই</p>
                     <p>⏰ সকাল ৭টা - রাত ১০টা</p>
+                    <a href="javascript:void(0)" onclick="openAdmin()" style="color:#ffd700; font-weight:bold;">
+                        🔗 এডমিন লগইন
+                    </a>
                 </div>
             </div>
             
             <div class="copyright">
-                <p>&copy; ২০২৩ আরিফা মুদি ভান্ডার। সকল অধিকার সংরক্ষিত।</p>
+                <p>&copy; ২০২৪ আরিফা মুদি ভান্ডার। সকল অধিকার সংরক্ষিত।</p>
                 <p style="margin-top:10px;">ওয়েবসাইট: আপনার দোকানের অনলাইন উপস্থিতি</p>
             </div>
         </div>
@@ -781,74 +897,31 @@
         // পণ্য অর্ডার ফাংশন
         function orderProduct(productName, price) {
             const phone = "8926765050";
-            const message = `আমি আরিফা মুদি ভান্ডার থেকে ${productName} অর্ডার করতে চাই। দাম: ${price} টাকা`;
-            
             const confirmOrder = confirm(`${productName} অর্ডার করবেন?\nদাম: ${price} টাকা\n\nওকে চাপলে সরাসরি কল করা হবে।`);
             
             if (confirmOrder) {
-                // ফোন কল করার অপশন
                 window.location.href = `tel:${phone}`;
-                
-                // বিকল্পভাবে WhatsApp মেসেজ
-                // const whatsappUrl = `https://wa.me/91${phone}?text=${encodeURIComponent(message)}`;
-                // window.open(whatsappUrl, '_blank');
             }
         }
         
-        // অর্ডার ফর্ম সাবমিট
-        function submitOrder(event) {
-            event.preventDefault();
-            
-            const name = document.getElementById('customerName').value;
-            const phone = document.getElementById('customerPhone').value;
-            const address = document.getElementById('customerAddress').value;
-            const items = document.getElementById('orderItems').value;
-            
-            // ফর্ম ভ্যালিডেশন
-            if (phone.length !== 10) {
-                alert('দয়া করে সঠিক ১০ ডিজিটের মোবাইল নম্বর দিন।');
-                return;
-            }
-            
-            // অর্ডার সংরক্ষণ (এখানে আপনি সার্ভারে ডাটা পাঠাতে পারেন)
-            const orderData = {
-                name: name,
-                phone: phone,
-                address: address,
-                items: items,
-                timestamp: new Date().toLocaleString()
-            };
-            
-            // লোকাল স্টোরেজে সংরক্ষণ (ঐচ্ছিক)
-            localStorage.setItem('lastOrder', JSON.stringify(orderData));
-            
-            // সাফল্য মেসেজ
-            alert(`ধন্যবাদ ${name}!\n\nআপনার অর্ডারটি সফলভাবে গৃহীত হয়েছে।\n\nঅর্ডার আইডি: #AR${Date.now().toString().slice(-6)}\nআমরা শীঘ্রই আপনার সাথে যোগাযোগ করব (${phone})।`);
-            
-            // ফর্ম রিসেট
-            document.getElementById('orderForm').reset();
-            
-            // WhatsApp এ মেসেজ পাঠানোর অপশন
-            const sendWhatsApp = confirm('WhatsApp এ অর্ডার কনফার্মেশন পাঠাতে চান?');
-            if (sendWhatsApp) {
-                const whatsappMessage = `আরিফা মুদি ভান্ডার অর্ডার:\nনাম: ${name}\nফোন: ${phone}\nঠিকানা: ${address}\nপণ্য: ${items}\n\nঅর্ডার আইডি: #AR${Date.now().toString().slice(-6)}`;
-                const whatsappUrl = `https://wa.me/918926765050?text=${encodeURIComponent(whatsappMessage)}`;
-                window.open(whatsappUrl, '_blank');
+        // এডমিন ফাংশন
+        function openAdmin() {
+            const password = prompt("এডমিন পাসওয়ার্ড দিন:");
+            // এখানে আপনার পাসওয়ার্ড সেট করুন (ডিফল্ট: arifa123)
+            if (password === "arifa123") {
+                window.open("#admin", "_self");
+                alert("এডমিন প্যানেলে স্বাগতম! নিচে স্ক্রল করুন।");
+            } else {
+                alert("ভুল পাসওয়ার্ড! Owner কে যোগাযোগ করুন।");
             }
         }
         
-        // পেজ লোড হওয়ার মেসেজ
-        window.onload = function() {
-            console.log('আরিফা মুদি ভান্ডার ওয়েবসাইট লোড হয়েছে!');
-            
-            // URL হ্যাশ অনুযায়ী নেভিগেশন হাইলাইট
-            const currentHash = window.location.hash || '#home';
-            document.querySelectorAll('.nav-menu a').forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === currentHash) {
-                    link.classList.add('active');
-                }
-            });
+        function setupMailNotification() {
+            const confirmAction = confirm("মেইল নোটিফিকেশন সেটআপ করতে Google Sheets ওপেন হবে। চালিয়ে যেতে চান?");
+            if (confirmAction) {
+                window.open("https://docs.google.com/spreadsheets/d/1fPdvXjJiq_0v2KZQq-fSmvzMIXkofh9lD3EWV8tblNY/edit#gid=0", "_blank");
+                alert("Sheets ওপেন হয়েছে। উপরে দেওয়া ধাপগুলো ফলো করুন।");
+            }
         }
         
         // নেভিগেশন স্ক্রোল
@@ -860,32 +933,65 @@
                 const targetSection = document.querySelector(targetId);
                 
                 if (targetSection) {
-                    // নেভিগেশন আপডেট
                     document.querySelectorAll('.nav-menu a').forEach(navLink => {
                         navLink.classList.remove('active');
                     });
                     this.classList.add('active');
                     
-                    // স্ক্রোল
                     targetSection.scrollIntoView({
                         behavior: 'smooth'
                     });
                     
-                    // URL আপডেট
                     window.history.pushState(null, null, targetId);
                 }
             });
         });
+        
+        // পেজ লোড হওয়ার মেসেজ
+        window.onload = function() {
+            console.log('আরিফা মুদি ভান্ডার ওয়েবসাইট লোড হয়েছে!');
+            
+            const currentHash = window.location.hash || '#home';
+            document.querySelectorAll('.nav-menu a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === currentHash) {
+                    link.classList.add('active');
+                }
+            });
+            
+            // এডমিন চেক
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.has('admin') && urlParams.get('admin') === 'true') {
+                openAdmin();
+            }
+        }
+        
+        // ফর্ম সাবমিশন ট্র্যাকিং
+        function trackFormSubmit() {
+            // ফর্ম সাবমিট হওয়ার পর স্বয়ংক্রিয় স্ক্রল
+            const checkFormSubmit = setInterval(() => {
+                if (window.location.hash === '#order') {
+                    const formIframe = document.querySelector('iframe[src*="google.com/forms"]');
+                    if (formIframe) {
+                        formIframe.onload = function() {
+                            console.log('Google Form loaded successfully');
+                        };
+                    }
+                    clearInterval(checkFormSubmit);
+                }
+            }, 500);
+        }
         
         // তারিখ আপডেট
         function updateDate() {
             const now = new Date();
             const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
             const dateString = now.toLocaleDateString('bn-BD', options);
-            console.log('আজকের তারিখ:', dateString);
+            document.querySelector('.copyright p').innerHTML = `&copy; ${now.getFullYear()} আরিফা মুদি ভান্ডার। সকল অধিকার সংরক্ষিত।<br><small>আজ: ${dateString}</small>`;
         }
         
         updateDate();
+        trackFormSubmit();
     </script>
 </body>
 </html>
